@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kick/Screens/Splash.dart';
+import 'package:kick/Screens/mScreen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Mai_me',
-      home: Splash(),
+      home: mScreen(),
     );
   }
 }
