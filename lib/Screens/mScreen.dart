@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:kick/Controller/fetchMeme.dart';
 
 class mScreen extends StatelessWidget {
   const mScreen({super.key});
@@ -37,7 +38,9 @@ class mScreen extends StatelessWidget {
                   height: 50,
                   width: 150,
                   child: ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        FetchMeme().fetchNewMeme();
+                      },
                       child: Text(
                         "More Fun-->",
                         style: TextStyle(
