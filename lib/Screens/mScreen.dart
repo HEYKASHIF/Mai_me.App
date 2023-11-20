@@ -11,7 +11,10 @@ class mScreen extends StatefulWidget {
 
 class _mScreenState extends State<mScreen> {
   String ImgUrl = " ";
+
   int? memeNo;
+  int targetMeme = 049;
+  bool isLoading = true;
   @override
   void initState() {
     // TODO: implement initState
@@ -24,11 +27,19 @@ class _mScreenState extends State<mScreen> {
     String getImg = await FetchMeme.fetchNewMeme();
     setState(() {
       ImgUrl = getImg;
+      isLoading = false;
     });
   }
 
   GetInitMemeNo() async {
     memeNo = await SaveMyData.fetchData() ?? 0;
+    if (memeNo! > 049) {
+      targetMeme = 0149;
+    } else if (memeNo! > 0149) {
+      targetMeme = 0449;
+    } else if (memeNo! > 0449) {
+      targetMeme = 0949;
+    }
     setState(() {});
   }
 
@@ -50,13 +61,29 @@ class _mScreenState extends State<mScreen> {
               height: 10,
             ),
             Text(
-              "Target Memes 140!",
+              "Target Memes $targetMeme",
               style: TextStyle(fontSize: 20),
             ),
             SizedBox(
               height: 70,
             ),
-            Image.network(ImgUrl),
+            isLoading
+                ? Container(
+                    height: 400,
+                    width: MediaQuery.of(context).size.width,
+                    child: Center(
+                      child: SizedBox(
+                        height: 40,
+                        width: 40,
+                        child: CircularProgressIndicator(),
+                      ),
+                    ),
+                  )
+                : Image.network(
+                    height: 400,
+                    width: MediaQuery.of(context).size.width,
+                    // fit: BoxFit.fitHeight,
+                    ImgUrl),
             SizedBox(
               height: 150,
             ),
@@ -80,7 +107,7 @@ class _mScreenState extends State<mScreen> {
               style: TextStyle(fontSize: 20),
             ),
             Text(
-              "MOHD KASHIF",
+              "🤩MKS🤩",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(
