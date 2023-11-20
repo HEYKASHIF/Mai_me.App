@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:kick/Controller/fetchMeme.dart';
+import 'package:kick/Controller/saveMyData.dart';
 
 class mScreen extends StatefulWidget {
   const mScreen({super.key});
@@ -9,14 +10,26 @@ class mScreen extends StatefulWidget {
 }
 
 class _mScreenState extends State<mScreen> {
-  String ImgUrl =
-      "https://www.mohenesh.com/wp-content/uploads/2021/11/Doge-meme-2.webp";
+  String ImgUrl = " ";
+  int? memeNo;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    GetInitMemeNo();
+    UpdateImg();
+  }
 
   void UpdateImg() async {
     String getImg = await FetchMeme.fetchNewMeme();
     setState(() {
       ImgUrl = getImg;
     });
+  }
+
+  GetInitMemeNo() async {
+    memeNo = await SaveMyData.fetchData() ?? 0;
+    setState(() {});
   }
 
   @override
@@ -30,7 +43,7 @@ class _mScreenState extends State<mScreen> {
               height: 100,
             ),
             Text(
-              "Meme #01",
+              "Meme # ${memeNo}",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             SizedBox(
@@ -51,7 +64,9 @@ class _mScreenState extends State<mScreen> {
                 height: 50,
                 width: 150,
                 child: ElevatedButton(
-                    onPressed: () {
+                    onPressed: () async {
+                      await SaveMyData.saveData(memeNo! + 1);
+                      GetInitMemeNo();
                       UpdateImg();
                     },
                     child: Text(
