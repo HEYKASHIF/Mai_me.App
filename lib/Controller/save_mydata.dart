@@ -10,6 +10,6 @@ class SaveMyData {
 
   static Future<int?> fetchData() async {
     final inst = await SharedPreferences.getInstance();
-    return await inst.getInt(memekey);
+    return inst.getInt(memekey);
   }
 }

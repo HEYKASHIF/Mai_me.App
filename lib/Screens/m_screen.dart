@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:kick/Controller/fetchMeme.dart';
-import 'package:kick/Controller/saveMyData.dart';
+import 'package:kick/Controller/fetch_meme.dart';
+import 'package:kick/Controller/save_mydata.dart';
 
 class mScreen extends StatefulWidget {
   const mScreen({super.key});
@@ -17,7 +17,6 @@ class _mScreenState extends State<mScreen> {
   bool isLoading = true;
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     GetInitMemeNo();
     UpdateImg();
@@ -50,28 +49,28 @@ class _mScreenState extends State<mScreen> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            SizedBox(
+            const SizedBox(
               height: 100,
             ),
             Text(
-              "Meme # ${memeNo}",
-              style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              "Meme # $memeNo",
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Text(
               "Target Memes $targetMeme",
-              style: TextStyle(fontSize: 20),
+              style: const TextStyle(fontSize: 20),
             ),
-            SizedBox(
+            const SizedBox(
               height: 70,
             ),
             isLoading
-                ? Container(
+                ? SizedBox(
                     height: 400,
                     width: MediaQuery.of(context).size.width,
-                    child: Center(
+                    child: const Center(
                       child: SizedBox(
                         height: 40,
                         width: 40,
@@ -84,10 +83,10 @@ class _mScreenState extends State<mScreen> {
                     width: MediaQuery.of(context).size.width,
                     // fit: BoxFit.fitHeight,
                     ImgUrl),
-            SizedBox(
+            const SizedBox(
               height: 150,
             ),
-            Container(
+            SizedBox(
                 height: 50,
                 width: 150,
                 child: ElevatedButton(
@@ -96,21 +95,21 @@ class _mScreenState extends State<mScreen> {
                       GetInitMemeNo();
                       UpdateImg();
                     },
-                    child: Text(
+                    child: const Text(
                       "More Fun-->",
                       style:
                           TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                     ))),
-            Spacer(),
-            Text(
+            const Spacer(),
+            const Text(
               "App Created By",
               style: TextStyle(fontSize: 20),
             ),
-            Text(
+            const Text(
               "🤩MKS🤩",
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
-            SizedBox(
+            const SizedBox(
               height: 30,
             )
           ],

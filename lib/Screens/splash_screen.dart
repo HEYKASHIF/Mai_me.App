@@ -6,22 +6,22 @@ class Splash extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color.fromARGB(255, 28, 40, 111),
+      backgroundColor: const Color.fromARGB(255, 28, 40, 111),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Container(
             // decoration: ShapeDecoration(
             // shape: CircleBorder({BorderSide Side = Border.all(), eccentricity: 10.0},),),
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: Image.asset(
               "assets/logo.png",
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 25,
           ),
-          Text(
+          const Text(
             "Mai_Me App",
             style: TextStyle(
                 fontSize: 30,
